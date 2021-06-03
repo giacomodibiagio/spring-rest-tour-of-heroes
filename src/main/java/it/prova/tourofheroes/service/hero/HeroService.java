@@ -16,5 +16,7 @@ public interface HeroService {
 
     public void rimuovi(Hero heroInstance);
 
+    public List<Hero> trovaByNome(String name);
+
 
 }

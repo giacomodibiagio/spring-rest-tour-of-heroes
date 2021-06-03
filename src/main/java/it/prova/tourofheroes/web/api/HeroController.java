@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.ws.rs.QueryParam;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -47,5 +48,11 @@ public class HeroController {
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         service.rimuovi(service.caricaSingoloElemeno(id));
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Hero>> getByName (@RequestParam("name") String name) {
+        List<Hero> hero = service.trovaByNome(name);
+        return new ResponseEntity<>(hero, HttpStatus.OK);
     }
 }

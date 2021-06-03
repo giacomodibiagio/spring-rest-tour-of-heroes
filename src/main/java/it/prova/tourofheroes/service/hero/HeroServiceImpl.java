@@ -39,4 +39,9 @@ public class HeroServiceImpl implements HeroService {
     public void rimuovi(Hero heroInstance) {
         repository.delete(heroInstance);
     }
+
+    @Override
+    public List<Hero> trovaByNome(String name) {
+        return repository.findByName(name);
+    }
 }
